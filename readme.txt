@@ -2,8 +2,8 @@
 Contributors: danielbachhuber, automattic
 Tags: gtd, productivity, workflow, p2
 Requires at least: 3.1
-Tested up to: 3.4.1
-Stable tag: 0.2
+Tested up to: 3.4.2
+Stable tag: 0.3
 
 Lightweight GTD for the P2 WordPress theme.
 
@@ -36,6 +36,11 @@ If the automatic process above fails, follow these simple steps to do a manual i
 Feel free to ask a question in the forums!
 
 == Changelog ==
+
+= 0.3 (Oct. 16, 2012) =
+* Support for registering your own custom states. Use something like `P2ResolvedPosts()->add_state( 'waiting-review', 'Waiting Review', array( 'after' => 'normal' ) );` to add a state, or `P2ResolvedPosts()->remove_state( 'unresolved' );` to remove a state.
+* Converted to a partial singleton pattern
+* Code cleanup
 
 = 0.2 (Jul. 18, 2012) =
 * Automatically mark new posts as unresolved by adding `add_filter( 'p2_resolved_posts_mark_new_as_unresolved', '__return_true' );` to your theme's functions.php. Thanks [macmeister](http://wordpress.org/support/topic/plugin-p2-resolved-posts-default-to-unresolved) for the request
