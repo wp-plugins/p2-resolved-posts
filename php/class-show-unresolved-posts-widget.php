@@ -188,11 +188,11 @@
  		$state = ( ! isset( $state ) ) ? $p2_resolved_posts->get_next_state( $p2_resolved_posts->get_first_state()->slug )->slug : $state;
 
  		echo $before_widget;
- 		$link_args = array(
+ 		$link_args = array_filter( array(
  				'resolved' => $state,
  				'tags' => $filter_tags,
  				'order' => $order,
-	 		);
+	 		) );
  		$more_link = add_query_arg( $link_args, get_site_url() );
  		if ( $title )
  			echo $before_title . $title . '&nbsp;<a title="' . esc_attr( __( 'See all matching unresolved posts', 'p2-resolved-posts' ) ) . '" href="' . esc_url( $more_link ) . '">&raquo;</a>' . $after_title;
@@ -234,7 +234,7 @@
  				echo '<p class="p2-resolved-posts-show-unresolved-posts-pagination">';
  				if ( $unresolved_posts->found_posts > $posts_per_page )
 		 			echo '<a href="#" class="p2-resolved-posts-previous-posts p2-resolved-posts-pagination-link" class="inactive">' . __( '&larr;', 'p2-resolved-posts' ) . '</a>&nbsp;&nbsp;';
-		 		echo sprintf( __( 'Showing <span class="p2-resolved-posts-first-post">1</span>-<span class="p2-resolved-posts-last-post">%1$d</span> of <span class="p2-resolved-posts-total-posts">%2$d</span> %3$s posts'), esc_html( $posts_per_page ), esc_html( $unresolved_posts->found_posts ), esc_html( $slug ) );
+		 		echo sprintf( __( 'Showing <span class="p2-resolved-posts-first-post">1</span>-<span class="p2-resolved-posts-last-post">%1$d</span> of <span class="p2-resolved-posts-total-posts">%2$d</span> %3$s posts'), esc_html( $posts_per_page ), esc_html( $unresolved_posts->found_posts ), esc_html( $state ) );
 		 		if ( $unresolved_posts->found_posts > $posts_per_page )
 		 			echo '&nbsp;&nbsp;<a href="#" class="p2-resolved-posts-next-posts p2-resolved-posts-pagination-link">' . __( '&rarr;', 'p2-resolved-posts' ) . '</a>';
 		 		echo '</p>';
